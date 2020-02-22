@@ -16,7 +16,7 @@
     name: 'App',
     computed: {
       ...mapState(['count']), //mapState()返回值：{ count(){return this.$store.state['count']} }
-      ...mapGetters(['evenOrOdd']) //mapGetters()返回值：{ evenOrOdd（）{return this.$store.getters['evenOrOdd']} }
+      ...mapGetters({evenOrOdd: 'evenOrOdd_custom'}) //mapGetters()返回值：{ evenOrOdd（）{return this.$store.getters['evenOrOdd']} }
     },
     methods: {
       ...mapActions(['increment','decrement','incrementIfOdd','incrementAsync'])
