@@ -1,9 +1,9 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <TodoHeader :addTodo="addTodo"/>
-      <TodoList :todos="todos" :deleteTodo="deleteTodo"/>
-      <TodoFooter :todos="todos" :deleteCompleteTodos="deleteCompleteTodos" :selectAll="selectAll"/>
+      <TodoHeader/>
+      <TodoList/>
+      <TodoFooter/>
     </div>
   </div>
 </template>
@@ -15,53 +15,46 @@
   import storageUtils from './utils/storageUtils'
 
   export default {
-    data () {
-      return {
-        todos: []
-      }
-    },
-    mounted() {
+/*    mounted() {
       //从local存储中读取保存的todos
-      //return JSON.parse(localStorage.getItem('todos_key') || '[]')
+      //this.todos = JSON.parse(localStorage.getItem('todos_key') || '[]')
       this.todos = storageUtils.readTodos()
     },
-    methods: {
-      addTodo (todo) {
-        this.todos.unshift(todo)
-      },
+*/
+    // methods: {
+    //   deleteTodo (index) {
+    //     this.todos.splice(index, 1)
+    //   },
+    //
+    //   // 删除所有已完成的
+    //   deleteCompleteTodos () {
+    //     this.todos = this.todos.filter(todo => !todo.complete)
+    //   },
+    //
+    //   // 全选/全不选
+    //   selectAll (isSelectAll) {
+    //     this.todos.forEach(todo => {
+    //       todo.complete = isSelectAll
+    //     })
+    //   }
+    // },
 
-      deleteTodo (index) {
-        this.todos.splice(index, 1)
-      },
-
-      // 删除所有已完成的
-      deleteCompleteTodos () {
-        this.todos = this.todos.filter(todo => !todo.complete)
-      },
-
-      // 全选/全不选
-      selectAll (isSelectAll) {
-        this.todos.forEach(todo => {
-          todo.complete = isSelectAll
-        })
-      }
-    },
-
-    watch: {
+/*    watch: {
       todos: {
         deep: true, // 深度监视
-        /*handler: function (val) {
+        /!*handler: function (val) {
           // 将数据(json)保存到localStorage
           // localStorage.setItem('todos_key', JSON.stringify(val))
           storageUtils.saveTodos(val)
-        }*/
+        }*!/
         // handler的值应该是一个函数, 且函数应该要有一个形参(接收todos最新的值)
         handler: storageUtils.saveTodos,
-        /*handler: function  (todos) {
+        /!*handler: function  (todos) {
           localStorage.setItem(TODOS_KEY, JSON.stringify(todos))
-        }*/
+        }*!/
       }
     },
+*/
 
     components: {
       TodoHeader,

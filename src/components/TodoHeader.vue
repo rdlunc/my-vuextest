@@ -6,15 +6,9 @@
 
 <script>
   export default {
-    props: {
-      addTodo: { // 指定属性名, 属性值的类型, 必要性
-        type: Function,
-        required: true
-      }
-    },
     data () {
       return {
-        inputTodo: ''
+        inputTodo: '' //组件内部使用的状态，不存在共享的问题 --> 不需要使用vuex管理它
       }
     },
     methods: {
@@ -31,8 +25,10 @@
           title: inputTodo,
           complete: false
         }
+
         // 添加到todos中显示
-        this.addTodo(todo)
+       this.$store.dispatch('addTodo', todo);
+
         // 清除输入
         this.inputTodo = ''
       }
