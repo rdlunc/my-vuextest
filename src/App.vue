@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>click: {{$store.state.count}} times, count is {{evenOrOdd}}</p>
+    <p>click: {{count}} times, count is {{evenOrOdd}}</p>
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementIfOdd">increment if odd</button>
@@ -10,34 +10,18 @@
 
 <script>
 
-export default {
-  name: 'App',
-  computed: {
-    evenOrOdd() {
-      return this.$store.getters.evenOrOdd;
-    }
-  },
-  methods: {
-    //增加
-    increment() {
-      //通知vuex去增加
-      this.$store.dispatch('increment') //触发store中对应的action调用
+  import {mapState, mapGetters, mapActions} from 'vuex'
+
+  export default {
+    name: 'App',
+    computed: {
+      ...mapState(['count']), //mapState()返回值：{ count(){return this.$store.state['count']} }
+      ...mapGetters(['evenOrOdd']) //mapGetters()返回值：{ evenOrOdd（）{return this.$store.getters['evenOrOdd']} }
     },
-    //减少
-    decrement() {
-      //通知vuex去减少
-      this.$store.dispatch('decrement')
-    },
-    //如果是奇数才增加
-    incrementIfOdd() {
-      this.$store.dispatch('incrementIfOdd')
-    },
-    //过1秒才增加
-    incrementAsync() {
-      this.$store.dispatch('incrementAsync')
+    methods: {
+      ...mapActions(['increment','decrement','incrementIfOdd','incrementAsync'])
     }
   }
-}
 </script>
 
 <style>
