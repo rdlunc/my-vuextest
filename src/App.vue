@@ -17,11 +17,14 @@
   export default {
     data () {
       return {
-        // todos: JSON.parse(localStorage.getItem('todos_key') || '[]')  // 读取localStorage保存的数据
-        todos: storageUtils.readTodos()
+        todos: []
       }
     },
-
+    mounted() {
+      //从local存储中读取保存的todos
+      //return JSON.parse(localStorage.getItem('todos_key') || '[]')
+      this.todos = storageUtils.readTodos()
+    },
     methods: {
       addTodo (todo) {
         this.todos.unshift(todo)
