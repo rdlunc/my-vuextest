@@ -5,7 +5,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import './base.css'
-import store from "../src-counter/store";
+import store from "./store";
 
 // 创建vm
 //compiler
