@@ -8,11 +8,18 @@
 <script>
   import {mapState} from 'vuex'
   import TodoItem from './TodoItem.vue'
+  import storageUtils from "../utils/storageUtils";
 
   export default {
    computed: {
       ...mapState(['todos'])
    },
+    watch: { //监视todos的所有变化
+      todos: {
+        deep: true, //深度监视
+        handler: storageUtils.saveTodos //保存todos到localStorage
+      }
+    },
    components: {
       TodoItem
     }

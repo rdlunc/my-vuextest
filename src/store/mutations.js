@@ -1,7 +1,7 @@
 /**
  * 包含多个更新state函数的对象 (包含多个由action触发去直接更新状态的方法的对象)
  */
-import {ADD_TODO, DELETE_TODO, SELECT_ALL_TODOS, DELETE_COMPLETE_TODOS} from './mutation-type'
+import {ADD_TODO, DELETE_TODO, SELECT_ALL_TODOS, DELETE_COMPLETE_TODOS, RECEIVE_TODOS} from './mutation-type'
 
 export default {
     [ADD_TODO](state, {todo}) {
@@ -17,5 +17,8 @@ export default {
     },
     [DELETE_COMPLETE_TODOS](state) {
         state.todos = state.todos.filter(todo => !todo.complete)
+    },
+    [RECEIVE_TODOS](state, {todos}) {
+        state.todos = todos
     }
 }
