@@ -4,53 +4,36 @@
       <input type="checkbox" v-model="checkAll"/>
     </label>
     <span>
-          <span>已完成{{completeSize}}</span> / 全部{{todos.length}}
+          <span>已完成{{completeCount}}</span> / 全部{{totalCount}}
         </span>
-    <button class="btn btn-danger" v-show="completeSize" @click="deleteAllCompleted">清除已完成任务</button>
+    <button class="btn btn-danger" v-show="completeCount" @click="deleteAllCompleted">清除已完成任务</button>
   </div>
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
+
   export default {
-    props: {
-      todos: Array,
-      deleteCompleteTodos: Function,
-      selectAll: Function
-    },
-
     computed: {
-      completeSize () {
-        //命令式编程
-        /*
-          let sum = 0
-          for (let i = 0; i < this.todos.length; i++) {
-              let todo = this.todos[i]
-              sum = sum + (todo.complete ? 1 : 0)
-              return sum
-          }
-          return sum
-        */
-        //使用声明编程
-        return this.todos.reduce((preTotal, todo) => preTotal + (todo.complete?1:0) ,0)
-      },
-
+      ...mapGetters(['totalCount', 'completeCount']),
       checkAll: {
         get () { // 决定是否勾选
-          return this.completeSize===this.todos.length && this.completeSize>0
+          return this.$store.getters.isAllSelect
         },
 
-        set (value) {// 点击了全选checkbox  value是当前checkbox的选中状态(true/false)
-          this.selectAll(value)
+        set (value) {// 点击了全选checkbox  value是当前checkbox的选中状态(boolean类型：true/false)
+          this.$store.dispatch('selectAllTodos', value)
         }
       },
     },
 
     methods: {
-      deleteAllCompleted () {
-        if(window.confirm('确定清除已完成的吗?')) {
-          this.deleteCompleteTodos()
-        }
-      }
+        //...mapActions({deleteAllCompleted: 'deleteCompleteTodos'})
+          deleteAllCompleted () {
+            if(window.confirm('确定清除已完成的吗?')) {
+                this.$store.dispatch('deleteCompleteTodos')
+            }
+          }
     }
   }
 </script>

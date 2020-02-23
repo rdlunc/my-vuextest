@@ -21,19 +21,6 @@
       this.todos = storageUtils.readTodos()
     },
 */
-    // methods: {
-    //   // 删除所有已完成的
-    //   deleteCompleteTodos () {
-    //     this.todos = this.todos.filter(todo => !todo.complete)
-    //   },
-    //
-    //   // 全选/全不选
-    //   selectAll (isSelectAll) {
-    //     this.todos.forEach(todo => {
-    //       todo.complete = isSelectAll
-    //     })
-    //   }
-    // },
 
 /*    watch: {
       todos: {
