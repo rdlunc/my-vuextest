@@ -1,17 +1,19 @@
 <template>
   <ul class="todo-main">
     <TodoItem v-for="(todo, index) in todos" :key="index"
-              :todo="todo" :deleteTodo="deleteTodo" :index="index"/>
+              :todo="todo"  :index="index"/>
   </ul>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import TodoItem from './TodoItem.vue'
-  export default {
-    // 声明接收标签属性
-    props: ['todos', 'deleteTodo'], // 会成为当前组件对象的属性, 可以在模板中直接访问, 也可以通过this来访问
 
-    components: {
+  export default {
+   computed: {
+      ...mapState(['todos'])
+   },
+   components: {
       TodoItem
     }
   }

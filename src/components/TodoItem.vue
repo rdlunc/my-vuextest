@@ -12,14 +12,13 @@
   export default {
     props: {// 指定属性名和属性值的类型
       todo: Object,
-      deleteTodo: Function,
       index: Number
     },
 
     data () {
       return {
-        bgColor: 'white',
-        isShow: false
+        bgColor: 'white', //背景颜色
+        isShow: false //button是否显示
       }
     },
 
@@ -36,7 +35,7 @@
       },
 
       deleteItem () {
-        this.deleteTodo(this.index)
+        this.$store.dispatch('deleteTodo', this.index)
       }
     }
   }

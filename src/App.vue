@@ -22,10 +22,6 @@
     },
 */
     // methods: {
-    //   deleteTodo (index) {
-    //     this.todos.splice(index, 1)
-    //   },
-    //
     //   // 删除所有已完成的
     //   deleteCompleteTodos () {
     //     this.todos = this.todos.filter(todo => !todo.complete)
