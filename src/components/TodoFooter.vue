@@ -20,6 +20,17 @@
 
     computed: {
       completeSize () {
+        //命令式编程
+        /*
+          let sum = 0
+          for (let i = 0; i < this.todos.length; i++) {
+              let todo = this.todos[i]
+              sum = sum + (todo.complete ? 1 : 0)
+              return sum
+          }
+          return sum
+        */
+        //使用声明编程
         return this.todos.reduce((preTotal, todo) => preTotal + (todo.complete?1:0) ,0)
       },
 
