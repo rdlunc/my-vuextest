@@ -17,6 +17,16 @@ import store from "./store";
 
 //runtime
 new Vue({
-  render: h => h(App),
+  render: h => h(App), //
   store //所有组件对象都多一个属性：$store
 }).$mount('#app')
+
+//上述写法相当于：
+/*
+new Vue({
+    render: function(createElement) {
+        return createElement(App)  // <App/>
+    },
+    store //所有组件对象都多一个属性：$store
+}).$mount('#app')
+*/
